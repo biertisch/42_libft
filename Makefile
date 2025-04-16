@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 NAME		=	libft.a
 
 SRC_FILES	=	ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint\
