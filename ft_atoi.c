@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:02:40 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/04/16 14:47:41 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:03:03 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_atoi(const char *nptr)
 	return (res * sign);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	char	*nptr;
 
@@ -64,4 +64,4 @@ int	main(int argc, char **argv)
 	printf("Testing with atoi: %d\n", atoi("-2147483648"));
 	printf("Testing with ft_atoi: %d\n", ft_atoi(NULL));
 	return (0);
-}
+}*/
