@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:09:20 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/04/16 12:42:42 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:33:52 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 	size_t	total_size;
-	size_t	size_max;
 
 	total_size = nmemb * size;
 	if (total_size / size != nmemb)
