@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:02:40 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/04/16 14:45:02 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:47:41 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("Usage: ./a.out [number]\n");
+		printf("Usage: [filename] [number]\n");
 		return (1);
 	}
 	nptr = argv[1];
