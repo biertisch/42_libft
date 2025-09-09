@@ -28,19 +28,6 @@
 
 
 // --------------------FT_BZERO--------------------
-// void	print_arr(int *arr)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < 5)
-// 	{
-// 		printf("%i", arr[i]);
-// 		i++;
-// 	}
-// 	printf("\n");
-// }
-
 // int	main(int argc, char **argv)
 // {
 // 	char	str1[6] = "hello";
@@ -85,19 +72,6 @@
 
 // --------------------FT_CALLOC--------------------
 /*
-void	print_arr(int *arr, int nmemb)
-{
-	int	i;
-
-	i = 0;
-	while (i < nmemb)
-	{
-		printf("%d", *(arr + i));
-		i++;
-	}
-	printf("\n");
-}
-
 int	main(int argc, char **argv)
 {
 	int	*ptr1;
@@ -461,15 +435,6 @@ int	main(int argc, char **argv)
 		free(content);
 }
 
-void	print_list(t_list *lst)
-{
-	while (lst)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-	}
-}
-
 t_list	*build_list(int n)
 {
 	t_list	*lst;
@@ -526,15 +491,6 @@ int	main(int argc, char **argv)
 {
 	if (content)
 		free(content);
-}
-
-void	print_list(t_list *lst)
-{
-	while (lst)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-	}
 }
 
 t_list	*build_list(int n)
@@ -618,15 +574,6 @@ void	del(void *content)
 {
 	if (content)
 		free(content);
-}
-
-void	print_list(t_list *lst)
-{
-	while (lst)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-	}
 }
 
 t_list	*build_list(int n)
@@ -758,15 +705,6 @@ void	del(void *content)
 		free(content);
 }
 
-void	print_list(t_list *lst)
-{
-	while (lst)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-	}
-}
-
 t_list	*build_list(int n)
 {
 	t_list	*lst;
@@ -877,15 +815,6 @@ int	main(int argc, char **argv)
 {
 	if (content)
 		free(content);
-}
-
-void	print_list(t_list *lst)
-{
-	while (lst)
-	{
-		printf("%s\n", (char *)lst->content);
-		lst = lst->next;
-	}
 }
 
 t_list	*build_list(int n)
@@ -1001,19 +930,7 @@ int	main(int argc, char **argv)
 
 
 //FT_MEMCPY
-/*void	print_arr(int *arr)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < 5)
-	{
-		printf("%i", arr[i]);
-		i++;
-	}
-	printf("\n");
-}
-
+/*
 int	main(int argc, char **argv)
 {
 	char	*src;
@@ -1054,19 +971,7 @@ int	main(int argc, char **argv)
 }*/
 
 //FT_MEMMOVE
-/*void	print_arr(int *arr)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < 5)
-	{
-		printf("%i", arr[i]);
-		i++;
-	}
-	printf("\n");
-}
-
+/*
 int	main(int argc, char **argv)
 {
 	char	str1[7] = "abcdef";
@@ -1121,19 +1026,7 @@ int	main(int argc, char **argv)
 
 
 //FT_MEMSET
-/*void	print_arr(int *arr)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < 5)
-	{
-		printf("%i", arr[i]);
-		i++;
-	}
-	printf("\n");
-}
-
+/*
 int	main(int argc, char **argv)
 {
 	char	str1[6] = "hello";

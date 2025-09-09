@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   print_string_array.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:03:32 by beatde-a         ###   ########.fr       */
+/*   Created: 2025/09/09 22:10:32 by beatde-a          #+#    #+#             */
+/*   Updated: 2025/09/09 22:14:30 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "../include/libft.h"
 
-# include "libft.h"
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-char	*read_file(int fd, char **buffer);
-void	extract_line(char *buffer, char **line);
-void	reset_buffer(char *buffer);
-void	clear_line(char **line);
-
-#endif
+void	print_string_array(char **array)
+{
+	if (!array)
+		return ;
+	while (*array)
+	{
+		ft_printf("%s\n", *array);
+		array++;
+	}
+}

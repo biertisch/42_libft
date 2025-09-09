@@ -6,20 +6,30 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:47:26 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 19:07:29 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:02:14 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+int	print_ptr(void *ptr)
 {
-	size_t	i;
+	char	*buffer;
+	int		len;
+	int		res;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!ptr)
+		return (print_str("(nil)"));
+	len = 0;
+	res = print_str("0x");
+	if (update_len(res, &len) < 0)
+		return (-1);
+	buffer = ft_itoa_base((uintptr_t)ptr, "0123456789abcdef");
+	if (!buffer)
+		return (-1);
+	res = print_str(buffer);
+	free (buffer);
+	return (update_len(res, &len));
 }
 
 int	update_len(int res, int *len)

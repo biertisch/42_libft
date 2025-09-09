@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:03:32 by beatde-a         ###   ########.fr       */
+/*   Created: 2025/09/09 21:44:21 by beatde-a          #+#    #+#             */
+/*   Updated: 2025/09/09 22:06:35 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "../include/libft.h"
 
-# include "libft.h"
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-char	*read_file(int fd, char **buffer);
-void	extract_line(char *buffer, char **line);
-void	reset_buffer(char *buffer);
-void	clear_line(char **line);
-
-#endif
+int	ft_is_space(char c)
+{
+	return (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
+		|| c == '\v');
+}

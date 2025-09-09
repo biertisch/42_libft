@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   count_digits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:03:32 by beatde-a         ###   ########.fr       */
+/*   Created: 2025/09/09 21:50:48 by beatde-a          #+#    #+#             */
+/*   Updated: 2025/09/09 21:58:11 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "../include/libft.h"
 
-# include "libft.h"
+int	count_digits(long n, size_t base_size)
+{
+	int	digits;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-char	*read_file(int fd, char **buffer);
-void	extract_line(char *buffer, char **line);
-void	reset_buffer(char *buffer);
-void	clear_line(char **line);
-
-#endif
+	digits = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		digits++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		digits++;
+		n /= base_size;
+	}
+	return (digits);
+}
