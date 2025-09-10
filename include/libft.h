@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:30:34 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:34:21 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:30:21 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include "ft_printf.h"
 # include "get_next_line_bonus.h"
+# include <ctype.h>
+# include <limits.h>
+# include <string.h>
 # include <stddef.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

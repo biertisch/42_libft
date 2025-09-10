@@ -1,9 +1,550 @@
-#include "../include/libft.h"
-#include <ctype.h>
-#include <limits.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 16:28:53 by beatde-a          #+#    #+#             */
+/*   Updated: 2025/09/10 20:01:39 by beatde-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "include/libft.h"
+# include <ctype.h>
+# include <limits.h>
+# include <string.h>
+# include <stddef.h>
+# include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+static void	print_array(int *array, int n)
+{
+	int	i;
+
+	if (!array || n <= 0)
+		return ;
+	i = 0;
+	while (i < n)
+	{
+		printf("%d", array[i]);
+		if (i < n - 1)
+			printf(" ");
+		i++;
+	}
+}
+
+static void	compare_memchr(char *s, char c, int size)
+{
+	printf("Testing with s=%s c=%c size=%d\n", s, c, size);
+	printf("ft_memchr: %s\n", (char *)ft_memchr(s, c, size));
+	printf("memchr:    %s\n", (char *)memchr(s, c, size));
+	printf("\n");
+}
+
+static void	test_ft_memchr(void)
+{
+	printf("\n---------------------TESTING FT_MEMCHR----------------------\n\n");
+
+	compare_memchr("hello", 'l', 5);
+	compare_memchr("hello world", 'w', 10);
+	compare_memchr("hello world", 'w', 3);
+	compare_memchr("hello", 'j', 6);
+	compare_memchr("hello", '\0', 6);
+}
+
+static void	compare_strncmp(char *s1, char *s2, int len)
+{
+	printf("Testing with s1=%s s2=%s len=%d\n", s1, s2, len);
+	printf("ft_strncmp: %d\n", ft_strncmp(s1, s2, len));
+	printf("strncmp:    %d\n", strncmp(s1, s2, len));
+	printf("\n");
+}
+
+static void	test_ft_strncmp(void)
+{
+	printf("\n---------------------TESTING FT_STRNCMP---------------------\n\n");
+
+	compare_strncmp("hello", "hello world", 5);
+	compare_strncmp("hello", "hello world", 6);
+	compare_strncmp("hello", "world", 10);
+	compare_strncmp("test\0", "test\1", 5);
+	compare_strncmp("\0", "\200", 1);
+}
+
+static void	compare_strrchr(char *s, char c)
+{
+	printf("Testing with s=%s c=%c\n", s, c);
+	printf("ft_strrchr: %s\n", ft_strrchr(s, c));
+	printf("strrchr:    %s\n", strrchr(s, c));
+	printf("\n");
+}
+
+static void	test_ft_strrchr(void)
+{
+	printf("\n---------------------TESTING FT_STRRCHR---------------------\n\n");
+
+	compare_strrchr("hello", 'l');
+	compare_strrchr("hello world", 'o');
+	compare_strrchr("hello", 'j');
+	compare_strrchr("hello", '\0');
+	compare_strrchr("", 'j');
+}
+
+static void	compare_strchr(char *s, char c)
+{
+	printf("Testing with s=%s c=%c\n", s, c);
+	printf("ft_strchr: %s\n", ft_strchr(s, c));
+	printf("strchr:    %s\n", strchr(s, c));
+	printf("\n");
+}
+
+static void	test_ft_strchr(void)
+{
+	printf("\n---------------------TESTING FT_STRCHR----------------------\n\n");
+
+	compare_strchr("hello", 'l');
+	compare_strchr("hello world", 'w');
+	compare_strchr("hello", 'j');
+	compare_strchr("hello", '\0');
+	compare_strchr("", 'j');
+}
+
+static void	compare_tolower(char c)
+{
+	printf("ft_tolower: %c becomes %c\n", c, ft_tolower(c));
+	printf("tolower:    %c becomes %c\n", c, tolower(c));
+}
+
+static void	test_ft_tolower(void)
+{
+	printf("\n---------------------TESTING FT_TOLOWER---------------------\n\n");
+
+	compare_tolower('D');
+	compare_tolower('A');
+	compare_tolower('j');
+	compare_tolower('3');
+	compare_tolower('!');
+	printf("\n");
+}
+
+static void	compare_toupper(char c)
+{
+	printf("ft_toupper: %c becomes %c\n", c, ft_toupper(c));
+	printf("toupper:    %c becomes %c\n", c, toupper(c));
+}
+
+static void	test_ft_toupper(void)
+{
+	printf("\n---------------------TESTING FT_TOUPPER---------------------\n\n");
+
+	compare_toupper('m');
+	compare_toupper('z');
+	compare_toupper('L');
+	compare_toupper('9');
+	compare_toupper('!');
+	printf("\n");
+}
+
+static void	compare_strlcat(char *src, char *dest1, char *dest2, int size)
+{
+	printf("Testing with src=%s dest=%s size=%d\n", src, dest1, size);
+	printf("ft_strlcat: res=%zu dest=%s\n", ft_strlcat(dest1, src, size), dest1);
+	printf("strlcat:    res=%zu dest=%s\n", strlcat(dest2, src, size), dest2);
+	printf("\n");
+}
+
+static void	test_ft_strlcat(void)
+{
+	printf("\n---------------------TESTING FT_STRLCAT---------------------\n\n");
+
+	char src[] = " world";
+	char dest1[50] = "hello";
+	char dest2[50] = "hello";
+	compare_strlcat(src, dest1, dest2, 11);
+
+	char dest3[50] = "";
+	char dest4[50] = "";
+	compare_strlcat(src, dest3, dest4, 5);
+}
+
+static void	compare_strlcpy(char *src, char *dest1, char *dest2, int size)
+{
+	printf("Testing with src=%s dest=%s size=%d\n", src, dest1, size);
+	printf("ft_strlcpy: res=%zu dest=%s\n", ft_strlcpy(dest1, src, size), dest1);
+	printf("strlcpy:    res=%zu dest=%s\n", strlcpy(dest2, src, size), dest2);
+	printf("\n");
+}
+
+static void	test_ft_strlcpy(void)
+{
+	printf("\n---------------------TESTING FT_STRLCPY---------------------\n\n");
+
+	char src[] = "world";
+	char dest1[50] = "hello";
+	char dest2[50] = "hello";
+	compare_strlcpy(src, dest1, dest2, 2);
+
+	char dest3[50] = "hello";
+	char dest4[50] = "hello";
+	compare_strlcpy(src, dest3, dest4, 5);
+}
+
+static void	compare_memmove_array(int *src, int *dest1, int *dest2, int n, int size)
+{
+	printf("Testing with src array={");
+	print_array(src, size);
+	printf("} dest array={");
+	print_array(dest1, size);
+	printf("} n=%d\n", n);
+
+	printf("ft_memmove: ");
+	ft_memmove(dest1, src, sizeof(int) * n);
+	print_array(dest1, size);
+	printf("\n");
+
+	printf("memmove:    ");
+	memmove(dest2, src, sizeof(int) * n);
+	print_array(dest2, size);
+	printf("\n\n");
+}
+
+static void	compare_memmove_string(char *src, char *dest1, char *dest2, int n)
+{
+	printf("Testing with src=%s dest=%s n=%d\n", src, dest1, n);
+	ft_memmove(dest1, src, n);
+	printf("ft_memmove: %s\n", dest1);
+	memmove(dest2, src, n);
+	printf("memmove:    %s\n", dest2);
+	printf("\n");
+}
+
+static void	test_ft_memmove(void)
+{
+	printf("\n--------------------TESTING FT_MEMMOVE----------------------\n\n");
+
+	char src[] = "hello";
+	char dest1[30] = "world";
+	char dest2[30] = "world";
+	compare_memmove_string(src, dest1, dest2, 0);
+	char dest3[30] = "world";
+	char dest4[30] = "world";
+	compare_memmove_string(src, dest3, dest4, 3);
+
+	int arr_src[5] = {9, 8, 7, 6, 5};
+	int arr_dest1[5] = {0, 1, 2, 3, 4};
+	int arr_dest2[5] = {0, 1, 2, 3, 4};
+	compare_memmove_array(arr_src, arr_dest1, arr_dest2, 4, 5);
+	int arr_dest3[5] = {0, 1, 2, 3, 4};
+	int arr_dest4[5] = {0, 1, 2, 3, 4};
+	compare_memmove_array(arr_src, arr_dest3, arr_dest4, 1, 5);
+}
+
+static void	compare_memcpy_array(int *src, int *dest1, int *dest2, int n, int size)
+{
+	printf("Testing with src array={");
+	print_array(src, size);
+	printf("} dest array={");
+	print_array(dest1, size);
+	printf("} n=%d\n", n);
+
+	printf("ft_memcpy: ");
+	ft_memcpy(dest1, src, sizeof(int) * n);
+	print_array(dest1, size);
+	printf("\n");
+
+	printf("memcpy:    ");
+	memcpy(dest2, src, sizeof(int) * n);
+	print_array(dest2, size);
+	printf("\n\n");
+}
+
+static void	compare_memcpy_string(char *src, char *dest1, char *dest2, int n)
+{
+	printf("Testing with src=%s dest=%s n=%d\n", src, dest1, n);
+	ft_memcpy(dest1, src, n);
+	printf("ft_memcpy: %s\n", dest1);
+	memcpy(dest2, src, n);
+	printf("memcpy:    %s\n", dest2);
+	printf("\n");
+}
+
+static void	test_ft_memcpy(void)
+{
+	printf("\n---------------------TESTING FT_MEMCPY----------------------\n\n");
+
+	char src[] = "hello";
+	char dest1[30] = "world";
+	char dest2[30] = "world";
+	compare_memcpy_string(src, dest1, dest2, 2);
+	char dest3[30] = "world";
+	char dest4[30] = "world";
+	compare_memcpy_string(src, dest3, dest4, 10);
+
+	int arr_src[5] = {9, 8, 7, 6, 5};
+	int arr_dest1[5] = {0, 1, 2, 3, 4};
+	int arr_dest2[5] = {0, 1, 2, 3, 4};
+	compare_memcpy_array(arr_src, arr_dest1, arr_dest2, 4, 5);
+	int arr_dest3[5] = {0, 1, 2, 3, 4};
+	int arr_dest4[5] = {0, 1, 2, 3, 4};
+	compare_memcpy_array(arr_src, arr_dest3, arr_dest4, 1, 5);
+}
+
+static void	compare_bzero_array(int *arr1, int *arr2, int n, int size)
+{
+	printf("Testing with int array={");
+	print_array(arr1, size);
+	printf("} n=%d\n", n);
+
+	printf("ft_bzero: ");
+	ft_bzero(arr1, sizeof(int) * n);
+	print_array(arr1, size);
+	printf("\n");
+
+	printf("bzero:    ");
+	bzero(arr2, sizeof(int) * n);
+	print_array(arr2, size);
+	printf("\n\n");
+}
+
+static void	compare_bzero_string(char *s1, char *s2, int n)
+{
+	printf("Testing with s=%s n=%d\n", s1, n);
+	ft_bzero(s1, n);
+	printf("ft_bzero: %s\n", s1);
+	bzero(s2, n);
+	printf("bzero:    %s\n", s2);
+	printf("\n");
+}
+
+static void	test_ft_bzero(void)
+{
+	printf("\n----------------------TESTING FT_BZERO----------------------\n\n");
+
+	char s1[6] = "hello";
+	char s2[6] = "hello";
+	compare_bzero_string(s1, s2, 3);
+
+	int arr1[5] = {1, 2, 3, 4, 5};
+	int arr2[5] = {1, 2, 3, 4, 5};
+	compare_bzero_array(arr1, arr2, 4, 5);
+}
+
+static void	compare_memset_array(int *arr1, int *arr2, int c, int n, int size)
+{
+	printf("Testing with int array={");
+	print_array(arr1, size);
+	printf("} c=%d n=%d\n", c, n);
+
+	printf("ft_memset: ");
+	ft_memset(arr1, c, sizeof(int) * n);
+	print_array(arr1, size);
+	printf("\n");
+
+	printf("memset:    ");
+	memset(arr2, c, sizeof(int) * n);
+	print_array(arr2, size);
+	printf("\n\n");
+}
+
+static void	compare_memset_string(char *s1, char *s2, char c, int n)
+{
+	printf("Testing with s=%s c=%c n=%d\n", s1, c, n);
+	ft_memset(s1, c, n);
+	printf("ft_memset: %s\n", s1);
+	memset(s2, c, n);
+	printf("memset:    %s\n", s2);
+	printf("\n");
+}
+
+static void	test_ft_memset(void)
+{
+	printf("\n---------------------TESTING FT_MEMSET----------------------\n\n");
+
+	char s1[6] = "hello";
+	char s2[6] = "hello";
+	compare_memset_string(s1, s2, '*', 3);
+
+	char s3[6] = "";
+	char s4[6] = "";
+	compare_memset_string(s3, s4, '!', 5);
+
+	int arr1[5] = {1, 2, 3, 4, 5};
+	int arr2[5] = {1, 2, 3, 4, 5};
+	compare_memset_array(arr1, arr2, 0, 2, 5);
+}
+
+static void	compare_strlen(char *s)
+{
+	printf("ft_strlen: '%s' has %zu characters\n", s, ft_strlen(s));
+	printf("strlen:    '%s' has %zu characters\n", s, strlen(s));
+}
+
+static void	test_ft_strlen(void)
+{
+	printf("\n---------------------TESTING FT_STRLEN----------------------\n\n");
+	compare_strlen("hello world");
+	compare_strlen("hello      wor l   d   ");
+	compare_strlen(" ");
+	compare_strlen("");
+	//compare_strlen(NULL); //segfault - expected behaviour
+	printf("\n");
+}
+
+static void	compare_isprint(int c)
+{
+	printf("ft_isprint: ");
+	if(ft_isprint(c))
+		printf("%c is printable\n", c);
+	else
+		printf("not printable\n");
+
+	printf("isprint:    ");
+	if(isprint(c))
+		printf("%c is printable\n", c);
+	else
+		printf("not printable\n");
+}
+
+static void	test_ft_isprint(void)
+{
+	printf("\n--------------------TESTING FT_ISPRINT----------------------\n\n");
+	compare_isprint('A');
+	compare_isprint('7');
+	compare_isprint('!');
+	compare_isprint('\n');
+	compare_isprint(127);
+	printf("\n");
+}
+
+static void	compare_isascii(int c)
+{
+	printf("ft_isascii: ");
+	if (ft_isascii(c))
+		printf("%c is ascii\n", c);
+	else
+		printf("not ascii\n");
+
+	printf("isascii:    ");
+	if (isascii(c))
+		printf("%c is ascii\n", c);
+	else
+		printf("not ascii\n");
+}
+
+static void	test_ft_isascii(void)
+{
+	printf("\n--------------------TESTING FT_ISASCII----------------------\n\n");
+	compare_isascii('f');
+	compare_isascii('7');
+	compare_isascii('*');
+	compare_isascii(200);
+	compare_isascii(-13);
+	printf("\n");
+}
+
+static void	compare_isalnum(char c)
+{
+	printf("ft_isalnum: ");
+	if (ft_isalnum(c))
+		printf("%c is alphanumeric\n", c);
+	else
+		printf("%c is not alphanumeric\n", c);
+
+	printf("isalnum:    ");
+	if (isalnum(c))
+		printf("%c is alphanumeric\n", c);
+	else
+		printf("%c is not alphanumeric\n", c);
+}
+
+static void	test_ft_isalnum(void)
+{
+	printf("\n--------------------TESTING FT_ISALNUM----------------------\n\n");
+	compare_isalnum('A');
+	compare_isalnum('p');
+	compare_isalnum('4');
+	compare_isalnum('!');
+	compare_isalnum('*');
+	printf("\n");
+}
+
+static void	compare_isdigit(char c)
+{
+	printf("ft_isdigit: ");
+	if (isdigit(c))
+		printf("%c is numeric\n", c);
+	else
+		printf("%c is not numeric\n", c);
+
+	printf("isdigit:    ");
+	if (isdigit(c))
+		printf("%c is numeric\n", c);
+	else
+		printf("%c is not numeric\n", c);
+}
+
+static void	test_ft_isdigit(void)
+{
+	printf("\n--------------------TESTING FT_ISDIGIT---------------------\n\n");
+	compare_isdigit('0');
+	compare_isdigit('9');
+	compare_isdigit('4');
+	compare_isdigit('m');
+	compare_isdigit('!');
+	printf("\n");
+}
+
+static void	compare_isalpha(char c)
+{
+	printf("ft_isalpha: ");
+	if (ft_isalpha(c))
+		printf ("%c is alphabetic\n", c);
+	else
+		printf ("%c is not alphabetic\n", c);
+	printf("isalpha:    ");
+	if (isalpha(c))
+		printf ("%c is alphabetic\n", c);
+	else
+		printf ("%c is not alphabetic\n", c);
+}
+
+static void	test_ft_isalpha(void)
+{
+	printf("\n--------------------TESTING FT_ISALPHA----------------------\n\n");
+	compare_isalpha('A');
+	compare_isalpha('z');
+	compare_isalpha('m');
+	compare_isalpha('4');
+	compare_isalpha('!');
+	printf("\n");
+}
+
+int	main(void)
+{
+	printf("----------------TESTING MANDATORY FUNCTIONS-----------------\n");
+	test_ft_isalpha();
+	test_ft_isdigit();
+	test_ft_isalnum();
+	test_ft_isascii();
+	test_ft_isprint();
+	test_ft_strlen();
+	test_ft_memset();
+	test_ft_bzero();
+	test_ft_memcpy();
+	test_ft_memmove();
+	test_ft_strlcpy();
+	test_ft_strlcat();
+	test_ft_toupper();
+	test_ft_tolower();
+	test_ft_strchr();
+	test_ft_strrchr();
+	test_ft_strncmp();
+	test_ft_memchr();
+	return (0);
+}
 
 // --------------------FT_ATOI--------------------
 // int	main(int argc, char **argv)
@@ -27,48 +568,7 @@
 // }
 
 
-// --------------------FT_BZERO--------------------
-// int	main(int argc, char **argv)
-// {
-// 	char	str1[6] = "hello";
-// 	char	str2[6] = "hello";
-// 	int		arr1[6] = {1, 2, 3, 4, 5, 6};
-// 	int		arr2[6] = {1, 2, 3, 4, 5, 6};
-// 	int		n;
-// 	int		start;
 
-// 	if (argc != 3)
-// 	{
-// 		printf("Usage: [filename] [number of elements] [start]\n");
-// 		return (1);
-// 	}
-// 	n = ft_atoi(argv[1]);
-// 	start = ft_atoi(argv[2]);
-// 	if (n > 6 || start > 6)
-// 	{
-// 		printf("Arguments must be between 0 and 6\n");
-// 		return (1);
-// 	}
-// 	while (n + start > 6)
-// 		n--;
-
-// 	//testing with string
-// 	ft_bzero(str1 + start, n);
-// 	printf("ft_bzero: %s\n", str1);
-// 	bzero(str2 + start, n);
-// 	printf("bzero: %s\n", str2);
-
-// 	//testing with int array
-// 	ft_bzero(arr1 + start, sizeof(int) * n);
-// 	printf("ft_bzero: ");
-// 	print_arr(arr1);
-
-// 	bzero(arr2 + start, sizeof(int) * n);
-// 	printf("bzero: ");
-// 	print_arr(arr2);
-
-// 	return (0);
-// }
 
 // --------------------FT_CALLOC--------------------
 /*
@@ -124,140 +624,7 @@ int	main(int argc, char **argv)
 	return (0);
 }*/
 
-//FT_ISALNUM
-/*int	main(int argc, char **argv)
-{
-	char	c;
 
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character]\n");
-		return (1);
-	}
-	c = argv[1][0];
-
-	printf("ft_isalnum: ");
-	if (ft_isalnum(c))
-		printf("%c is alphanumeric\n", c);
-	else
-		printf("%c is not alphanumeric\n", c);
-
-	printf("isalnum: ");
-	if (isalnum(c))
-		printf("%c is alphanumeric\n", c);
-	else
-		printf("%c is not alphanumeric\n", c);
-
-	return (0);
-}*/
-
-//IS_ALPHA
-/*int	main(int argc, char** argv)
-{
-	char	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character]\n");
-		return (1);
-	}
-	c = argv[1][0];
-
-	printf("ft_isalpha: ");
-	if (ft_isalpha(c))
-		printf ("%c is alphabetic\n", c);
-	else
-		printf ("%c is not alphabetic\n", c);
-
-	printf("isalpha: ");
-	if (isalpha(c))
-		printf ("%c is alphabetic\n", c);
-	else
-		printf ("%c is not alphabetic\n", c);
-
-	return (0);
-}*/
-
-//IS_ASCII
-/*int	main(int argc, char **argv)
-{
-	int	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character code]\n");
-		return (1);
-	}
-	c = ft_atoi(argv[1]);
-
-	printf("ft_isascii: ");
-	if (ft_isascii(c))
-		printf("ascii\n");
-	else
-		printf("not ascii\n");
-
-	printf("isascii: ");
-	if (isascii(c))
-		printf("ascii\n");
-	else
-		printf("not ascii\n");
-
-	return (0);
-}*/
-
-//FT_ISDIGIT
-/*int	main(int argc, char** argv)
-{
-	char	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character]\n");
-		return (1);
-	}
-	c = argv[1][0];
-
-	printf("ft_isdigit: ");
-	if (isdigit(c))
-		printf("%c is numeric\n", c);
-	else
-		printf("%c is not numeric\n", c);
-
-	printf("isdigit: ");
-	if (isdigit(c))
-		printf("%c is numeric\n", c);
-	else
-		printf("%c is not numeric\n", c);
-
-	return (0);
-}*/
-
-//FT_ISPRINT
-/*int	main(int argc, char **argv)
-{
-	int	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character code]\n");
-		return (1);
-	}
-	c = ft_atoi(argv[1]);
-
-	printf("ft_isprint: ");
-	if(ft_isprint(c))
-		printf("printable\n");
-	else
-		printf("not printable\n");
-
-	printf("isprint: ");
-	if(isprint(c))
-		printf("printable\n");
-	else
-		printf("not printable\n");
-
-	return (0);
-}*/
 
 //FT_ITOA
 /*int	main(int argc, char **argv)
@@ -864,33 +1231,7 @@ int	main(int argc, char **argv)
 	return (0);
 }*/
 
-//FT_MEMCHR
-/*int	main(int argc, char **argv)
-{
-	char	*s;
-	char	c;
-	int	n;
 
-	if (argc != 4)
-	{
-		printf("Usage: [filename] [string] [character] [size]\n");
-		return (1);
-	}
-	s = argv[1];
-	c = argv[2][0];
-	n = ft_atoi(argv[3]);
-
-	printf("Testing with ft_memchr: %s\n", (char *)ft_memchr(s, c, n));
-	printf("Testing with memchr: %s\n", (char *)memchr(s, c, n));
-
-	printf("Testing with ft_memchr: %s\n", (char *)ft_memchr(s, '\0', n));
-	printf("Testing with memchr: %s\n", (char *)memchr(s, '\0', n));
-
-	printf("Testing with ft_memchr: %s\n", (char *)ft_memchr(s, s[0] + 256, n));
-	printf("Testing with memchr: %s\n", (char *)memchr(s, s[0] + 256, n));
-
-	return (0);
-}*/
 
 //FT_MEMCMP
 /*int	main(int argc, char **argv)
@@ -924,156 +1265,6 @@ int	main(int argc, char **argv)
 	n *= sizeof(int);
 	printf("ft_memcmp: %d\n", ft_memcmp(arr1, arr2, n));
 	printf("memcmp: %d\n", memcmp(arr1, arr2, n));
-
-	return (0);
-}*/
-
-
-//FT_MEMCPY
-/*
-int	main(int argc, char **argv)
-{
-	char	*src;
-	char	dst1[30] = "world";
-	char	dst2[30] = "world";
-	int		arr_src[5] = {9, 8, 7, 6, 5};
-	int		arr_dst1[5] = {0, 1, 2, 3, 4};
-	int		arr_dst2[5] = {0, 1, 2, 3, 4};
-	int		n;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [source string] [number of elements]\n");
-		return (1);
-	}
-	src = argv[1];
-	n = ft_atoi(argv[2]);
-
-	//testing with string
-	ft_memcpy(dst1, src, n);
-	printf("ft_memcpy: %s\n", dst1);
-	memcpy(dst2, src, n);
-	printf("memcpy: %s\n", dst2);
-
-	ft_memcpy(dst1, dst1, n);
-	printf("ft_memcpy: %s\n", dst1);
-
-	//testing with int array
-	ft_memcpy(arr_dst1, arr_src, sizeof(int) * n);
-	printf("ft_memcpy: ");
-	print_arr(arr_dst1);
-
-	memcpy(arr_dst2, arr_src, sizeof(int) * n);
-	printf("memcpy: ");
-	print_arr(arr_dst2);
-
-	return (0);
-}*/
-
-//FT_MEMMOVE
-/*
-int	main(int argc, char **argv)
-{
-	char	str1[7] = "abcdef";
-	char	str2[7] = "abcdef";
-	char	str3[7] = "abcdef";
-	char	str4[7] = "abcdef";
-	int		arr1[7] = {0, 1, 2, 3, 4, 5, 6};
-	int		arr2[7] = {0, 1, 2, 3, 4, 5, 6};
-	int		arr3[7] = {0, 1, 2, 3, 4, 5, 6};
-	int		arr4[7] = {0, 1, 2, 3, 4, 5, 6};
-	int		start;
-	int		n;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [number of elements] [start]\n");
-		return (1);
-	}
-	n = ft_atoi(argv[1]);
-	start = ft_atoi(argv[2]);
-	while(n + start > 7)
-		n--;
-
-	//testing with string
-	ft_memmove(str1 + start, str1, n);
-	printf("ft_memmove: %s\n", str1);
-	memmove(str2 + start, str2, n);
-	printf("memmove: %s\n", str2);
-
-	ft_memmove(str3, str3 + start, n);
-	printf("ft_memmove: %s\n", str3);
-	memmove(str4, str4 + start, n);
-	printf("memmove: %s\n", str4);
-
-	//testing with int array
-	ft_memmove(arr1 + start, arr1, sizeof(int) * n);
-	printf("ft_memmove: ");
-	print_arr(arr1);
-	memmove(arr2 + start, arr2, sizeof(int) * n);
-	printf("memmove: ");
-	print_arr(arr2);
-
-	ft_memmove(arr3, arr3 + start, sizeof(int) * n);
-	printf("ft_memmove: ");
-	print_arr(arr3);
-	memmove(arr4, arr4 + start, sizeof(int) * n);
-	printf("memmove: ");
-	print_arr(arr4);
-
-	return (0);
-}*/
-
-
-//FT_MEMSET
-/*
-int	main(int argc, char **argv)
-{
-	char	str1[6] = "hello";
-	char	str2[6] = "hello";
-	char	str3[6] = "";
-	char	str4[6] = "";
-	char	str5[7] = "banana";
-	char	str6[7] = "banana";
-	int		arr1[5] = {1, 2, 3, 4, 5};
-	int		arr2[5] = {1, 2, 3, 4, 5};
-	char	c;
-	int		n;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [character] [number of members]\n");
-		return (1);
-	}
-	c = argv[1][0];
-	n = ft_atoi(argv[2]);
-
-	//testing with string
-	ft_memset(str1, c, n);
-	printf("ft_memset: %s\n", str1);
-	memset(str2, c, n);
-	printf("memset: %s\n", str2);
-
-	//testing with empty string
-	ft_memset(str3, c, n);
-	printf("ft_memset: %s\n", str3);
-	memset(str4, c, n);
-	printf("memset: %s\n", str4);
-
-	//testing with non-ascii character
-	ft_memset(str5, 256, n);
-	printf("ft_memset: %s\n", str5);
-	memset(str6, 256, n);
-	printf("memset: %s\n", str6);
-
-	//testing with int array
-	printf("ft_memset: ");
-	ft_memset(arr1, 0, sizeof(int) * n);
-	print_arr(arr1);
-
-	printf("memset: ");
-	memset(arr2, 0, sizeof(int) * n);
-	print_arr(arr2);
 
 	return (0);
 }*/
@@ -1185,31 +1376,6 @@ int	main(int argc, char **argv)
 	return (0);
 }*/
 
-//FT_STRCHR
-/*int	main(int argc, char **argv)
-{
-	char	*s;
-	char	c;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [string] [character]\n");
-		return (1);
-	}
-	s = argv[1];
-	c = argv[2][0];
-	printf("ft_strchr: %s\n", ft_strchr(s, c));
-	printf("strchr: %s\n", strchr(s, c));
-	printf("ft_strchr: %s\n", ft_strchr(s, '\0'));
-	printf("strchr: %s\n", strchr(s, '\0'));
-	printf("ft_strchr: %s\n", ft_strchr("", '\0'));
-	printf("strchr: %s\n", strchr("", '\0'));
-	printf("ft_strchr: %s\n", ft_strchr(s, s[0] + 256));
-	printf("strchr: %s\n", strchr(s, s[0] + 256));
-	printf("ft_strchr: %s\n", ft_strchr(s, 256));
-	printf("strchr: %s\n", strchr(s, 256));
-	return (0);
-}*/
 
 //FT_STRDUP
 /*int	main(int argc, char **argv)
@@ -1284,73 +1450,6 @@ int	main(void)
 	return (0);
 }*/
 
-//FT_STRLCAT
-/*int	main(int argc, char **argv)
-{
-	char	dst1[50] = "hello";
-	char	dst2[50] = "hello";
-	char	dst3[8] = "";
-	char	dst4[8] = "";
-	char	*src;
-	int		size;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [source string] [size]\n");
-		return (1);
-	}
-	src = argv[1];
-	size = ft_atoi(argv[2]);
-	printf("ft_strlcat: %zu\n", ft_strlcat(dst1, src, size));
-	printf("Destination string: %s\n", dst1);
-	printf("strlcat: %zu\n", strlcat(dst2, src, size));
-	printf("Destination string: %s\n", dst2);
-
-	printf("ft_strlcat: %zu\n", ft_strlcat(dst3, src, size));
-	printf("Destination string: %s\n", dst3);
-	printf("strlcat: %zu\n", strlcat(dst4, src, size));
-	printf("Destination string: %s\n", dst4);
-
-	return (0);
-}*/
-
-
-//FT_STRLCPY
-/*int	main(int argc, char **argv)
-{
-	char	dst1[50] = "hello";
-	char	dst2[50] = "hello";
-	char	*src;
-	int		size;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [source string] [size]\n");
-		return (1);
-	}
-	src = argv[1];
-	size = atoi(argv[2]);
-	printf("ft_strlcpy: %zu\n", ft_strlcpy(dst1, src, size));
-	printf("Destination string: %s\n", dst1);
-	printf("strlcpy: %zu\n", strlcpy(dst2, src, size));
-	printf("Destination string: %s\n", dst2);
-	return (0);
-}*/
-
-//FT_STRLEN
-/*int	main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [string]\n");
-		return (1);
-	}
-	printf("ft_strlen: %zu\n", ft_strlen(argv[1]));
-	printf("strlen: %zu\n", strlen(argv[1]));
-	return (0);
-}*/
-
-
 //FT_STRMAPI
 /*char	testf(unsigned int i, char c)
 {
@@ -1385,31 +1484,6 @@ int	main(int argc, char **argv)
 }*/
 
 
-//FT_STRNCMP
-/*int	main(int argc, char **argv)
-{
-	char	*s1;
-	char	*s2;
-	int		n;
-
-	if (argc != 4)
-	{
-		printf("Usage: [filename] [string 1] [string 2] [length]\n");
-		return (1);
-	}
-	s1 = argv[1];
-	s2 = argv[2];
-	n = atoi(argv[3]);
-	printf("ft_strncmp: %d\n", ft_strncmp(s1, s2, n));
-	printf("strncmp: %d\n", strncmp(s1, s2, n));
-	printf("ft_strncmp: %d\n", ft_strncmp("test\0", "test\1", 5));
-	printf("strncmp: %d\n", strncmp("test\0", "test\1", 5));
-	printf("ft_strncmp: %d\n", ft_strncmp("\0", "\200", 1));
-	printf("strncmp: %d\n", strncmp("\0", "\200", 1));
-	return (0);
-}*/
-
-
 //FT_STRNSTR
 /*int	main(int argc, char **argv)
 {
@@ -1429,32 +1503,6 @@ int	main(int argc, char **argv)
 	//printf("strnstr: %s\n", strnstr(main, sub, n));
 	printf("ft_strnstr: %s\n", ft_strnstr(str, str, n));
 	//printf("strnstr: %s\n", strnstr(main, main, n));
-	return (0);
-}*/
-
-//FT_STRRCHR
-/*int	main(int argc, char **argv)
-{
-	char	*s;
-	char	c;
-
-	if (argc != 3)
-	{
-		printf("Usage: [filename] [string] [character]\n");
-		return (1);
-	}
-	s = argv[1];
-	c = argv[2][0];
-	printf("ft_strrchr: %s\n", ft_strrchr(s, c));
-	printf("strrchr: %s\n", strrchr(s, c));
-	printf("ft_strrchr: %s\n", ft_strrchr(s, '\0'));
-	printf("strrchr: %s\n", strrchr(s, '\0'));
-	printf("ft_strrchr: %s\n", ft_strrchr("", '\0'));
-	printf("strrchr: %s\n", strrchr("", '\0'));
-	printf("ft_strrchr: %s\n", ft_strrchr(s, s[0] + 256));
-	printf("strrchr: %s\n", strrchr(s, s[0] + 256));
-	printf("ft_strrchr: %s\n", ft_strrchr(s, 256));
-	printf("strrchr: %s\n", strrchr(s, 256));
 	return (0);
 }*/
 
@@ -1503,39 +1551,5 @@ int	main(int argc, char **argv)
 	else
 		printf("%s\n", sub);
 	free(sub);
-	return (0);
-}*/
-
-//FT_TOLOWER
-/*int	main(int argc, char **argv)
-{
-	char	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character]\n");
-		return (1);
-	}
-	c = argv[1][0];
-	printf("ft_tolower: %c\n", ft_tolower(c));
-	c = argv[1][0];
-	printf("tolower: %c\n", tolower(c));
-	return (0);
-}*/
-
-//FT_TOUPPER
-/*int	main(int argc, char **argv)
-{
-	char	c;
-
-	if (argc != 2)
-	{
-		printf("Usage: [filename] [character]\n");
-		return (1);
-	}
-	c = argv[1][0];
-	printf("ft_toupper: %c\n", ft_toupper(c));
-	c = argv[1][0];
-	printf("toupper: %c\n", toupper(c));
 	return (0);
 }*/

@@ -27,6 +27,9 @@ CFLAGS		=	-Wall -Werror -Wextra -I$(INC_DIR)
 LIB			=	ar rcs
 RM			=	rm -rf
 
+TEST		=	test
+TEST_BONUS	=	test_bonus
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -52,6 +55,10 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
+test: $(NAME) $(TEST).c
+	$(CC) $(CFLAGS) $(TEST).c $(NAME) -o $(TEST)
+	./$(TEST)
+
 clean:
 	$(RM) $(OBJ_DIR) .bonus .extra
 
@@ -60,4 +67,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean extra fclean re
+.PHONY: all bonus clean extra fclean re test
