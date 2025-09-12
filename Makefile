@@ -13,10 +13,11 @@ EXTRA_FILES	=	ft_printf ft_printf_utils get_next_line_bonus count_digits free_st
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 INC_DIR		=	include/
+TEST_DIR	=	tester/
 
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-BONUS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES)))
-EXTRA		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(EXTRA_FILES)))
+BONUS_SRC	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES)))
+EXTRA_SRC	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(EXTRA_FILES)))
 
 OBJ         =	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 BONUS_OBJ	=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
@@ -26,9 +27,6 @@ CC			=	cc -g
 CFLAGS		=	-Wall -Werror -Wextra -I$(INC_DIR)
 LIB			=	ar rcs
 RM			=	rm -rf
-
-TEST		=	test
-TEST_BONUS	=	test_bonus
 
 all: $(NAME)
 
@@ -55,16 +53,19 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-test: $(NAME) $(TEST).c
-	$(CC) $(CFLAGS) $(TEST).c $(NAME) -o $(TEST)
-	./$(TEST)
+test:
+	$(MAKE) -C $(TEST_DIR)
+
+test_bonus:
+	$(MAKE) -C $(TEST_DIR) test_bonus
 
 clean:
 	$(RM) $(OBJ_DIR) .bonus .extra
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) -C $(TEST_DIR) fclean
 
 re: fclean all
 
-.PHONY: all bonus clean extra fclean re test
+.PHONY: all bonus clean extra fclean re test test_bonus

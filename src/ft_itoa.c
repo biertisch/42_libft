@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:21:24 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:08:20 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/11 17:00:44 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,38 @@ static void	set_digits(char *s, long int nbr, size_t i)
 	}
 }
 
+static int	digit_count(long n, size_t base_size)
+{
+	int	digits;
+
+	digits = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		digits++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		digits++;
+		n /= base_size;
+	}
+	return (digits);
+}
+
 char	*ft_itoa(int n)
 {
 	char		*s;
 	long int	nbr;
-	size_t		digit_count;
+	size_t		count;
 
 	nbr = n;
-	digit_count = count_digits(nbr, 10);
-	s = malloc(digit_count + 1);
+	count = digit_count(nbr, 10);
+	s = malloc(count + 1);
 	if (!s)
 		return (NULL);
-	set_digits(s, nbr, digit_count - 1);
-	s[digit_count] = '\0';
+	set_digits(s, nbr, count - 1);
+	s[count] = '\0';
 	return (s);
 }

@@ -1,0 +1,8 @@
+.vscode
+.bonus
+.extra
+obj
+*.a
+*.out
+*.pdf
+*.txt

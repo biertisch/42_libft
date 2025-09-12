@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:16:04 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:17:58 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:41:26 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	free_string_array(char **array)
 	if (!array)
 		return ;
 	i = 0;
-	while (*(array + i))
+	while (array[i])
 	{
-		free(*(array + i));
+		free(array[i]);
 		i++;
 	}
 	free(array);

@@ -6,11 +6,17 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:02:40 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:08:32 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:51:07 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
+
+static int	is_space(char c)
+{
+	return (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
+		|| c == '\v');
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -19,7 +25,7 @@ int	ft_atoi(const char *nptr)
 
 	neg = 0;
 	res = 0;
-	while (ft_isspace(*nptr))
+	while (is_space(*nptr))
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 	{
