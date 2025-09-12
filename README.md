@@ -4,15 +4,13 @@
 
 ### Overview
 
-Libft is a custom C library containing reimplementations of standard C functions, together with new utilities.
-
-It is a foundational project at 42 school designed to deepen our understanding of low-level programming and memory management in C.
+Libft is a custom C library containing reimplementations of standard C functions, together with new utilities. It is a foundational project at 42 school designed to deepen our understanding of low-level programming and memory management in C.
 
 The mandatory and bonus functions were implemented from scratch without relying on any external functions except `malloc`, `free`, and `write`.
 
 After validating the project, I extended the library with some extra functions and reorganized all the files. A lightweight tester is also included.
 
-
+---
 ### Features
 
 #### Mandatory
@@ -38,10 +36,10 @@ After validating the project, I extended the library with some extra functions a
 * String manipulation: `ft_atol`, `ft_strcmp`
 * Integer manipulation: `count_digits`, `ft_itoa_base`
 * Memory management: `free_string_array`
-* Input/Output: `print_int_array`, `print_string_array`, `print_list`
-* Other 42 projects: `ft_printf`, `get_next_line`
+* Input/Output: `ft_printf` (42 project), `get_next_line` (42 project), `print_int_array`, `print_string_array`, `print_list`
 
 
+---
 ### Compilation & Usage
 
 **Requirements:** GCC, make
@@ -54,6 +52,7 @@ After validating the project, I extended the library with some extra functions a
 * To test bonus functions: `make test_bonus`
 
 
+---
 ### Tester
 A simple tester is included to quickly check the behaviour of libft mandatory and bonus functions.
 
@@ -68,13 +67,14 @@ test_bonus:
 	$(MAKE) -C tester test_bonus
 ```
 
-
+---
 ### About 42
 
 42 is a computer science school founded in Paris in 2013. It follows a project-based and peer-to-peer pedagogy, with no teachers and no lectures.
 
 
-### License & contact
+---
+### License & Contact
 
 This repository is open for learning and reuse.
 
