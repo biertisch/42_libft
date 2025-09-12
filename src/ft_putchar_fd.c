@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:56:04 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:42:15 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:46:12 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	if (fd == -1)
+	if (fd < 0)
 		return ;
 	write(fd, &c, 1);
 }

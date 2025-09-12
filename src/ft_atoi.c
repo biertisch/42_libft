@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:02:40 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/11 15:51:07 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:05:04 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	is_space(char c)
 
 int	ft_atoi(const char *nptr)
 {
-	long int	res;
-	int			neg;
+	long	res;
+	int		neg;
 
 	neg = 0;
 	res = 0;

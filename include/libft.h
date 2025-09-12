@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:30:34 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/11 22:20:26 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:09:34 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int		ft_lstsize(t_list *lst);
 int		count_digits(long n, size_t base_size);
 void	free_string_array(char **array);
 long	ft_atol(const char *str);
-int		ft_isspace(char c);
-char	*ft_itoa_base(long n, char *base);
+int		ft_is_space(char c);
+char	*ft_itoa_base(long n, const char *base);
 int		ft_strcmp(const char *str1, const char *str2);
 void	print_int_array(int *array, int n);
 void	print_list(t_list *lst);

@@ -32,7 +32,7 @@ After validating the project, I extended the library with some extra functions a
 * Linked lists: `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
 
 #### Extra (post-validation)
-* Character classification: `ft_isspace`
+* Character classification: `ft_is_space`
 * String manipulation: `ft_atol`, `ft_strcmp`
 * Integer manipulation: `count_digits`, `ft_itoa_base`
 * Memory management: `free_string_array`
@@ -47,7 +47,7 @@ After validating the project, I extended the library with some extra functions a
 * To build mandatory functions: `make`
 * To build mandatory and bonus functions: `make bonus`
 * To build everything (including extras): `make extra`
-* To integrate in other projects, include `libft.h` and link with `-L.libft -lft`
+* To integrate in other projects, include `libft.h` and link with `-Llibft -lft`
 * To test mandatory functions: `make test`
 * To test bonus functions: `make test_bonus`
 
@@ -70,7 +70,7 @@ test_bonus:
 ---
 ### About 42
 
-42 is a computer science school founded in Paris in 2013. It follows a project-based and peer-to-peer pedagogy, with no teachers and no lectures.
+42 is a computer science school founded in Paris in 2013. It follows a project-based and peer-to-peer pedagogy, focused on low-level languages and systems programming.
 
 
 ---

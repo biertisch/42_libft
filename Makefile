@@ -8,7 +8,7 @@ SRC_FILES	=	ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdig
 BONUS_FILES	=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter ft_lstlast ft_lstmap\
 				ft_lstnew ft_lstsize
 EXTRA_FILES	=	ft_printf ft_printf_utils get_next_line_bonus count_digits free_string_array ft_atol\
-				ft_isspace ft_itoa_base ft_strcmp print_int_array print_list print_string_array
+				ft_is_space ft_itoa_base ft_strcmp print_int_array print_list print_string_array
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/

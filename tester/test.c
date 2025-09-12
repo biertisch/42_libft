@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:28:53 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/12 14:53:26 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:17:47 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,9 +180,9 @@ static void	print_ft_split(char *s, char c)
 		printf("(null)");
 	else
 		while (split[i])
-			printf("%s", split[i++]);
+			printf("%s\n", split[i++]);
 	tested_free_string_array(split);
-	printf("\n\n");
+	printf("\n");
 }
 
 static void	test_ft_split(void)

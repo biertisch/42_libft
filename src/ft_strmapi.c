@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 18:58:24 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:53:56 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*dst;
+	char	*dest;
 	size_t	i;
 
 	if (!s || !f)
 		return (NULL);
-	dst = ft_strdup(s);
-	if (!dst)
+	dest = ft_strdup(s);
+	if (!dest)
 		return (NULL);
 	i = 0;
-	while (dst[i])
+	while (dest[i])
 	{
-		dst[i] = f(i, dst[i]);
+		dest[i] = f(i, dest[i]);
 		i++;
 	}
-	return (dst);
+	return (dest);
 }

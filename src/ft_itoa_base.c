@@ -6,13 +6,13 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 21:54:31 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:01:22 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:08:38 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-char	*ft_itoa_base(long n, char *base)
+char	*ft_itoa_base(long n, const char *base)
 {
 	char	*buffer;
 	size_t	base_size;

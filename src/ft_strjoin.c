@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:18:23 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 18:56:47 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:52:16 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	sjoin = malloc(size);
+	sjoin = malloc(sizeof(char) * size);
 	if (!sjoin)
 		return (NULL);
 	ft_strlcpy(sjoin, s1, size);

@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:21:24 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/11 17:00:44 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:12:20 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ static void	set_digits(char *s, long int nbr, size_t i)
 		nbr *= -1;
 	}
 	if (nbr < 10)
-	{
-		s[i] = nbr + 48;
-	}
+		s[i] = nbr + '0';
 	else
 	{
 		set_digits(s, nbr / 10, i - 1);
-		s[i] = nbr % 10 + 48;
+		s[i] = nbr % 10 + '0';
 	}
 }
 
-static int	digit_count(long n, size_t base_size)
+static int	digit_count(long n)
 {
 	int	digits;
 
@@ -45,7 +43,7 @@ static int	digit_count(long n, size_t base_size)
 	while (n > 0)
 	{
 		digits++;
-		n /= base_size;
+		n /= 10;
 	}
 	return (digits);
 }
@@ -57,7 +55,7 @@ char	*ft_itoa(int n)
 	size_t		count;
 
 	nbr = n;
-	count = digit_count(nbr, 10);
+	count = digit_count(nbr);
 	s = malloc(count + 1);
 	if (!s)
 		return (NULL);

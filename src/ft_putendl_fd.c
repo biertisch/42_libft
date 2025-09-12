@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:57:09 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:42:18 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:46:23 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (fd == -1 || !s)
+	if (fd < 0 || !s)
 		return ;
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);

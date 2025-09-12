@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:59:56 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 18:55:26 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:49:39 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ static int	alt_strlen(char const *s, char c)
 
 static int	new_str(char const *s, char c, size_t i)
 {
-	if (s[i] != c && (s[i - 1] == c || i == 0))
-		return (1);
-	return (0);
+	return (s[i] != c && (s[i - 1] == c || i == 0));
 }
 
 static char	**build_arr(char const *s, char c, size_t str_count)
