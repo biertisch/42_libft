@@ -4,11 +4,11 @@
 
 ### Overview
 
-Libft is a custom C library containing reimplementations of standard C functions, together with new utilities. It is a foundational project at 42 school designed to deepen our understanding of low-level programming and memory management in C.
+Libft is a **custom C library** containing reimplementations of standard C functions, together with new utilities. It is a foundational project at 42 school designed to deepen our understanding of **low-level programming** and **memory management** in C.
 
 The mandatory and bonus functions were implemented from scratch without relying on any external functions except `malloc`, `free`, and `write`.
 
-After validating the project, I extended the library with some extra functions and reorganized all the files. A lightweight tester is also included.
+After validating the project, I extended the library with some **extra functions** and reorganized all the files. A lightweight **tester** is also included.
 
 ---
 ### Features
@@ -38,19 +38,26 @@ After validating the project, I extended the library with some extra functions a
 * Memory management: `free_string_array`
 * Input/Output: `ft_printf` (42 project), `get_next_line` (42 project), `print_int_array`, `print_string_array`, `print_list`
 
-
 ---
 ### Compilation & Usage
 
 **Requirements:** GCC, make
 
-* To build mandatory functions: `make`
-* To build mandatory and bonus functions: `make bonus`
-* To build everything (including extras): `make extra`
-* To integrate in other projects, include `libft.h` and link with `-Llibft -lft`
-* To test mandatory functions: `make test`
-* To test bonus functions: `make test_bonus`
+* To build the library:
+```
+make		# mandatory
+make bonus	# mandatory + bonus
+make extra	# everything
+```
+* To integrate in other projects:
+  * Include `libft.h`.
+  * Link with `-Llibft -lft`.
 
+* To build and execute tests:
+```
+make test	# test mandatory functions
+make test_bonus	# test bonus functions
+```
 
 ---
 ### Tester
@@ -58,7 +65,8 @@ A simple tester is included to quickly check the behaviour of libft mandatory an
 
 To use it in your own project:
 1. Copy the `tester` folder into your libft directory.
-2. Run `make` from inside `tester` or connect it to your Makefile with:
+2. Run `make` from inside `tester`.
+3. Or connect it to your Makefile with:
 ```
 test:
 	$(MAKE) -C tester
@@ -75,6 +83,4 @@ test_bonus:
 ---
 ### License & Contact
 
-This repository is open for learning and reuse.
-
-If you have questions or ideas, feel free to open an issue or reach out.
+This repository is open for learning and reuse. Contributions, suggestions, and discussions are welcome — feel free to open an issue or reach out.
