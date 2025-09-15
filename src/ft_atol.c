@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:32:01 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:33:12 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/15 19:59:34 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long	ft_atol(const char *str)
 
 	res = 0;
 	sign = 1;
-	while (ft_isspace(*str))
+	while (ft_is_space(*str))
 		str++;
 	if (*str == '+' || *str == '-')
 	{
