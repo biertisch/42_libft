@@ -31,40 +31,48 @@ RM			=	rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(LIB) $(NAME) $^
+	@echo "Linking library..."
+	@$(LIB) $(NAME) $^
 	@echo "libft built!"
 
 bonus: .bonus
 extra: .extra
 
 .bonus: $(OBJ) $(BONUS_OBJ)
-	$(LIB) $(NAME) $^
+	@echo "Linking library..."
+	@$(LIB) $(NAME) $^
 	@touch $@
 	@echo "libft (with bonus) built!"
 
 .extra: $(OBJ) $(BONUS_OBJ) $(EXTRA_OBJ)
-	$(LIB) $(NAME) $^
+	@echo "Linking library..."
+	@$(LIB) $(NAME) $^
 	@touch $@
 	@echo "libft (with extra) built!"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR) compile_message
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
+
+compile_message:
+	@echo "Compiling object files..."
 
 test:
-	$(MAKE) -C $(TEST_DIR)
+	@$(MAKE) -C $(TEST_DIR)
 
 test_bonus:
-	$(MAKE) -C $(TEST_DIR) test_bonus
+	@$(MAKE) -C $(TEST_DIR) test_bonus
 
 clean:
-	$(RM) $(OBJ_DIR) .bonus .extra
+	@echo "Removing object files..."
+	@$(RM) $(OBJ_DIR) .bonus .extra
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -C $(TEST_DIR) fclean
+	@echo "Removing executable..."
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(TEST_DIR) fclean > /dev/null
 
 re: fclean all
 

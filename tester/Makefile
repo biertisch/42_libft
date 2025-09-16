@@ -16,21 +16,22 @@ RM			=	rm -rf
 all: test
 
 test: $(NAME) $(TEST_SRC)
-	$(CC) $(TEST_SRC) $(LIB) -o $(TEST) $(CFLAGS)
-	./$(TEST)
+	@$(CC) $(TEST_SRC) $(LIB) -o $(TEST) $(CFLAGS)
+	@./$(TEST)
 
 test_bonus: bonus $(TESTB_SRC)
-	$(CC) $(TESTB_SRC) $(LIB) -o $(TEST_BONUS) $(CFLAGS)
-	./$(TEST_BONUS)
+	@$(CC) $(TESTB_SRC) $(LIB) -o $(TEST_BONUS) $(CFLAGS)
+	@./$(TEST_BONUS)
 
 $(NAME):
-	$(MAKE) -C ../
+	@$(MAKE) -C ../
 
 bonus:
-	$(MAKE) -C ../ bonus
+	@$(MAKE) -C ../ bonus
 
 clean:
-	$(RM) $(TEST) $(TEST_BONUS)
+	@echo "Removing executable..."
+	@$(RM) $(TEST) $(TEST_BONUS)
 
 fclean: clean
 
