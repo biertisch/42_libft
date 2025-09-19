@@ -39,7 +39,7 @@ After validating the project, I extended the library with some **extra functions
 * Input/Output: `ft_printf` (42 project), `get_next_line` (42 project), `print_int_array`, `print_string_array`, `print_list`
 
 ---
-### Compilation & Usage
+### Compilation
 
 #### Requirements
 * GCC
@@ -52,6 +52,8 @@ make		# mandatory
 make bonus	# mandatory + bonus
 make extra	# everything
 ```
+
+### Compilation & Usage
 
 #### To integrate in other projects:
   * Include `libft.h`.
