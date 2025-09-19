@@ -53,6 +53,7 @@ make bonus	# mandatory + bonus
 make extra	# everything
 ```
 
+---
 ### Usage
 
 #### To integrate in other projects:
