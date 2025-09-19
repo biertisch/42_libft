@@ -53,7 +53,7 @@ make bonus	# mandatory + bonus
 make extra	# everything
 ```
 
-### Compilation & Usage
+### Usage
 
 #### To integrate in other projects:
   * Include `libft.h`.
