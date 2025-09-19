@@ -41,21 +41,23 @@ After validating the project, I extended the library with some **extra functions
 ---
 ### Compilation & Usage
 
-**Requirements:** GCC, make
+#### Requirements
+* GCC
+* make
 
-* To build the library:
 ```
 make		# mandatory
 make bonus	# mandatory + bonus
 make extra	# everything
 ```
-* To integrate in other projects:
+
+#### To integrate in other projects:
   * Include `libft.h`.
   * Link with `-Llibft -lft`.
 
-* To build and execute tests:
+#### To build and execute tests:
 ```
-make test	# test mandatory functions
+make test		# test mandatory functions
 make test_bonus	# test bonus functions
 ```
 
