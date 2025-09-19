@@ -46,6 +46,8 @@ After validating the project, I extended the library with some **extra functions
 * make
 
 ```
+git clone https://github.com/biertisch/libft.git
+cd libft
 make		# mandatory
 make bonus	# mandatory + bonus
 make extra	# everything
