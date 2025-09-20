@@ -41,9 +41,7 @@ After validating the project, I extended the library with some **extra functions
 ---
 ### Compilation
 
-#### Requirements
-* GCC
-* make
+**Requirements**: `gcc`, `make`
 
 ```
 git clone https://github.com/biertisch/libft.git
