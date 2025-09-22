@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/22 17:50:49 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:14:23 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,3 @@ char	*get_next_line(int fd)
 	}
 	return (read_file(fd, &buffer[fd], size));
 }
-
