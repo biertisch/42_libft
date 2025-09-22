@@ -6,7 +6,7 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 22:03:32 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:51:04 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,5 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*read_file(int fd, char **buffer);
-void	extract_line(char *buffer, char **line);
-void	reset_buffer(char *buffer);
-void	clear_line(char **line);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: beatde-a <beatde-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:25:21 by beatde-a          #+#    #+#             */
-/*   Updated: 2025/09/09 19:11:36 by beatde-a         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:50:49 by beatde-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/get_next_line_bonus.h"
 
-void	clear_line(char **line)
+static void	clear_line(char **line)
 {
 	if (line && *line)
 	{
@@ -21,7 +21,7 @@ void	clear_line(char **line)
 	}
 }
 
-void	reset_buffer(char *buffer)
+static void	reset_buffer(char *buffer)
 {
 	size_t	line_len;
 
@@ -34,7 +34,7 @@ void	reset_buffer(char *buffer)
 		ft_strlcpy(buffer, buffer + line_len, ft_strlen(buffer + line_len) + 1);
 }
 
-void	extract_line(char *buffer, char **line)
+static void	extract_line(char *buffer, char **line)
 {
 	char	*new_line;
 	size_t	old_len;
@@ -62,7 +62,7 @@ void	extract_line(char *buffer, char **line)
 	*line = new_line;
 }
 
-char	*read_file(int fd, char **buffer)
+static char	*read_file(int fd, char **buffer, size_t size)
 {
 	char		*line;
 	ssize_t		bytes_read;
@@ -72,7 +72,7 @@ char	*read_file(int fd, char **buffer)
 	{
 		if (!(*buffer)[0])
 		{
-			bytes_read = read(fd, *buffer, BUFFER_SIZE);
+			bytes_read = read(fd, *buffer, size);
 			if (bytes_read <= 0)
 			{
 				if (bytes_read < 0)
@@ -92,15 +92,18 @@ char	*read_file(int fd, char **buffer)
 char	*get_next_line(int fd)
 {
 	static char	*buffer[1024];
+	size_t		size;
 
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
+	size = (size_t)BUFFER_SIZE;
 	if (!buffer[fd])
 	{
-		buffer[fd] = malloc(BUFFER_SIZE + 1);
+		buffer[fd] = malloc(size + 1);
 		if (!buffer[fd])
 			return (NULL);
-		ft_memset(buffer[fd], 0, BUFFER_SIZE + 1);
+		ft_memset(buffer[fd], 0, size + 1);
 	}
-	return (read_file(fd, &buffer[fd]));
+	return (read_file(fd, &buffer[fd], size));
 }
+
