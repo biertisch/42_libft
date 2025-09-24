@@ -4,7 +4,7 @@
 
 ### Overview
 
-Libft is a **custom C library** containing reimplementations of standard C functions, together with new utilities. It is a foundational project at 42 school designed to deepen our understanding of **low-level programming** and **memory management** in C.
+Libft is a **custom C library** containing reimplementations of standard C functions, together with new utilities. It is a foundational project at 42 school designed to deepen our understanding of **low-level concepts** and **memory management** in C.
 
 The mandatory and bonus functions were implemented from scratch without relying on any external functions except `malloc`, `free`, and `write`.
 
@@ -83,7 +83,7 @@ test_bonus:
 ---
 ### About 42
 
-42 is a computer science school founded in Paris in 2013. It follows a project-based, peer-to-peer pedagogy focused on low-level programming and algorithmic thinking.
+42 is a computer science school founded in Paris in 2013. It follows a project-based, peer-to-peer pedagogy focused on mid-level programming and algorithmic thinking.
 
 ---
 ### License & Contact
