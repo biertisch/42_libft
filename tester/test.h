@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <termios.h>
 # include <unistd.h>
+# include <bsd/string.h>
 
 void	tested_print_int_array(int *array, int n);
 void	tested_free_string_array(char **array);
