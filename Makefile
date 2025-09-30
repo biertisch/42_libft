@@ -28,6 +28,8 @@ CFLAGS		=	-Wall -Werror -Wextra -I$(INC_DIR)
 LIB			=	ar rcs
 RM			=	rm -rf
 
+SENTINEL	=	$(OBJ_DIR).compiled
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -50,14 +52,17 @@ extra: .extra
 	@touch $@
 	@echo "libft (with extra) built!"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR) compile_message
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-compile_message:
+$(OBJ): $(SENTINEL)
+
+$(SENTINEL):
 	@echo "Compiling object files..."
+	@touch $@
 
 test:
 	@$(MAKE) -C $(TEST_DIR)
