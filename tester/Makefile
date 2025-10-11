@@ -10,7 +10,7 @@ TEST		=	test.out
 TEST_BONUS	=	test_bonus.out
 
 CC			=	cc -g
-CFLAGS		=	-Wall -Werror -Wextra -I. -lreadline
+CFLAGS		=	-Wall -Werror -Wextra -I. -lreadline -lbsd
 RM			=	rm -rf
 
 all: test
